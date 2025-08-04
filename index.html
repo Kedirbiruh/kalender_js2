@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Kalender</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 id="title">Kalenderblatt <span id="fullDate1"></span></h1>
+    </div>
+
+    <div id="kalenderblatt">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="8" id="month">Juli 2025</th>
+          </tr>
+          <tr>
+            <th>KW</th>
+            <th>MO</th>
+            <th>DI</th>
+            <th>MI</th>
+            <th>DO</th>
+            <th>FR</th>
+            <th id="samstag">SA</th>
+            <th id="sonntag">SO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>27</td>
+            <td>30</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>28</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <td>29</td>
+            <td id="today">14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>30</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+          </tr>
+          <tr>
+            <td>31</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="text_box">
+      <p>
+        Der <span id="fullDate2"></span> ist ein
+        <span id="fullWeekday1"></span> und zwar der
+        <span id="nthWeekday"></span> <span id="fullWeekday2"></span> im Monat
+        <span id="fullMonth"> </span> des Jahres 2025. Dieser
+        <span id="monthName"> </span> hat
+        <span id="daysInMonth"> </span> Tage. <span id="holiday"></span>
+      </p>
+      <h4>Historische Ereignisse am 14.07.</h4>
+      <ul>
+        <li>
+          Vor 605 Jahren: Kaiser Sigismunds Versuch, die Stadt Prag den
+          Hussiten unter ihrem Anführer Jan Žižka zu entreißen, scheitert in
+          der Schlacht am Veitsberg.
+        </li>
+        <li>
+          Vor 305 Jahren: Der Frieden von Frederiksborg beendet den Konflikt
+          zwischen Dänemark und Schweden im Großen Nordischen Krieg.
+        </li>
+        <li>
+          Vor 146 Jahren: In Berlin erfolgt die Gründung des
+          Reichsschatzamtes.
+        </li>
+        <li>
+          Vor 27 Jahren: Das Bundesverfassungsgericht macht den Weg zur
+          Einführung der Rechtschreibreform frei.
+        </li>
+        <li>
+          Vor 230 Jahren: In Frankreich wird die Marseillaise Nationalhymne.
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
