@@ -190,15 +190,3 @@ const days = ['MO', 'DI', 'MI', 'DO', 'FR', 'SA', 'SO'];
 let container = document.querySelector(".container");
 container.appendChild(tabelle);
 
-let Jahr = document.querySelector(.jahr)
-let Jahr = document.querySelector(.monat)
-
-// aktuelles Datum siehe oben
-let date = new date();
-// aktueller Monat
-let month = today.getMonth();
-// aktuelles Jahr
-let Yeear = date.getFullYear();
-
-jahr.textContent = year   // aktuelles Jahr
-monat.textContent = monthNames[month]
