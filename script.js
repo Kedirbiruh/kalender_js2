@@ -187,6 +187,23 @@ const days = ['MO', 'DI', 'MI', 'DO', 'FR', 'SA', 'SO'];
 
 
 
-let container = document.querySelector(".container");
-container.appendChild(tabelle);
+function renderCalenderStart() {     // funktion to render days
+
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();  // letzter Tag d. Monats
+    const calendar = document.getElementById("Kalenderblatt");
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
