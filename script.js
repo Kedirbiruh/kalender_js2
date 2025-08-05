@@ -1,8 +1,6 @@
 
-let today = new Date();
-// console.log('today: ' + today);
+let today = new Date(2025, 05);
 let day = today.getDate();
-// console.log('day: ' + day);
 
 let dayFormatted;
 if (day < 10) {
@@ -10,22 +8,17 @@ if (day < 10) {
 } else {
     dayFormatted = day;
 }
-// console.log('dayFormatted: ' + dayFormatted);
 
 let month = today.getMonth();
-// console.log('month: ' + month);
 let monthFormatted;
 if (month + 1 < 10) {
     monthFormatted = '0' + (month + 1);
 } else {
     monthFormatted = month + 1;
 }
-// console.log('monthFormatted: ' + monthFormatted);
 
 let year = today.getFullYear();
-// console.log('year: ' + year)
 let dateFormatted = dayFormatted + '.' + monthFormatted + '.' + year;
-// console.log('dateFormatted: ' + dateFormatted);
 
 document.getElementById("fullDate1").textContent = dateFormatted;
 document.getElementById("fullDate2").textContent = dateFormatted;
@@ -186,134 +179,26 @@ if (istFeiertag) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const daysContainer = document.querySelector(".days")
-
-
-
-
-
-
-
+let day = date.getDay(); // 0 (Sonntag) bis 6 (Samstag)
+return (day + 6) % 7;    // um Montag = 0 bzw- als erter Tag zu bekommen
 
 const days = ['MO', 'DI', 'MI', 'DO', 'FR', 'SA', 'SO'];
+
+
+
+
+let container = document.querySelector(".container");
+container.appendChild(tabelle);
+
+let Jahr = document.querySelector(.jahr)
+let Jahr = document.querySelector(.monat)
 
 // aktuelles Datum siehe oben
 let date = new date();
 // aktueller Monat
-let currentMonth = date.getMonth();
+let month = today.getMonth();
 // aktuelles Jahr
-let currentYeear = date.getFullYear();
+let Yeear = date.getFullYear();
 
-// funktion to render days
-function renderCalender() {
-
-    // get prev month, current month, and next month days
-const firstDay = new Date(currentYeear, currentMonth, 1);
-const lastDay = new Date(currentYeear, currentMonth + 1, 0);
-const lastDayIndex = lastDay.getDay();
-const lastDayDate = lastDay.getDate();
-const prevLastDay = new Date(currentYeear, currentMonth, 0);
-const prevLastDayDate = prevLastDay.getDate();
-const nextDays = 7 - lastDayIndex - 1;
-
-
-// update current year abd month in header
-month.innertHTML = `${months[currentMonth]} ${currentYeear}`
-
-// update days html
-let days = "";
-
-// prev days html
-for (let x = firstDay.getDay(); x > 0; x--) {
-
-    days += `<div class="day prev">${prevLastDayDate - x + 1}</div>';
-    }
-
-        // current month days
-
-for (let i = 1; i <= lastDayDate; i++) {
-
-            // check if its today zhen add today class
-        if(i === new Date.getDate() && currentMonth === new Date().getMonth() &&
-             currentYeear().getFullYear()
-        ) 
-        // if date month year matches add today
-        days += `<div class="day today">${i}</div>'
-        
-        }  else {
-
-                    // dont add today
-        days += `<div class= "day">${i}</div>';
-        }
-    } 
-        
-            /next month days 
-for (let j = 1; j <= nextDays; j++){
-       days +=  `<div class= "day next">${j}</div>';    
-        }            
-        daysContainer.innerHTML = days;
-
-    }
-
-        renderCalender();
-
-        nextBtn.addEventListener("click", () => {
-
-            // increase current month by one
-            currentMonth++;
-            if(currentMonth > 11){
-                // if a monthgets greater that 11 make it 0 and increase year by one
-                currentMonth=0;
-                currentYeear++;
-            }
-            
-            // render calender
-            renderCalender();
-        });
-
-        // prev month Btn
-
-        prevBtn.addEventListener("click", () = > {
-            // increase by one
-            currentMonth--;
-            // check if let than 0the nmake it 11 and decrease year
-            if (currentMonth < 0) {
-                currentMonth =11;
-                currentYeear--;
-            }
-            renderCalender();
-            
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+jahr.textContent = year   // aktuelles Jahr
+monat.textContent = monthNames[month]
