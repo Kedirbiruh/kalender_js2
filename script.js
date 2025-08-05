@@ -1,5 +1,5 @@
 
-let today = new Date(2025, 05);
+let today = new Date();
 let day = today.getDate();
 
 let dayFormatted;
@@ -177,33 +177,38 @@ if (istFeiertag) {
 
 
 
-
-
-let day = date.getDay(); // 0 (Sonntag) bis 6 (Samstag)
-return (day + 6) % 7;    // um Montag = 0 bzw- als erter Tag zu bekommen
+// return (day + 6) % 7;    // um Montag = 0 bzw- als erster Tag zu bekommen
 
 const days = ['MO', 'DI', 'MI', 'DO', 'FR', 'SA', 'SO'];
 
 
 
 
-function renderCalenderStart() {     // funktion to render days
-
-
+function renderCalenderStart(year, month) {     // funktion to render days
     const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();  // letzter Tag d. Monats
-    const calendar = document.getElementById("Kalenderblatt");
 
+    const anfang = new Date(year, month, 1);            // 	1. Tag des Monats
+    const ende = new Date(year, month + 1, 0);          // letzter Tag des Monats
+    const Kalenderblatt = document.getElementById("Kalenderblatt");
 
+    const tbody = document.getElementsByTagName("tbody")[0]
+    // 6x wochen >> 7x tage
 
+    // wochen (y bzw vertikal)
+    for (let weeks = 0; weeks < 6; weeks++) {
+        const row = document.createElement("tr")
 
+        // tage (x bzw horizontal)
+        for (let days = 0; days < 7; days++) {
+            const cell = document.createElement("td")
+            cell.innerText = "1"
+            row.appendChild(cell)
+        }
 
-
-
-
-
-
+        tbody.appendChild(row)
+    }
 
 
 }
 
+renderCalenderStart(2025, 7)

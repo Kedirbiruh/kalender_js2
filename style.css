@@ -1,79 +1,79 @@
-body{
-    background-color: rgb(94, 89, 83);
-    margin-right: 70px;
-    margin-left: 70px;
-    background-image: url('IT.jfif') /* optional */
+body {
+  background-color: rgb(94, 89, 83);
+  margin-right: 70px;
+  margin-left: 70px;
+  background-image: url('IT.jfif')
+    /* optional */
     background-size: cover;
-   
-}
-
-.container{
-    display: grid;
-    grid-template-areas:
-        "header header"
-        "kalenderblatt text_box";
-    grid-template-columns: 1fr 1fr;
-    font-family: Arial, Helvetica, sans-serif
-
-    
 
 }
 
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "kalenderblatt text_box";
+  grid-template-columns: 1fr 1fr;
+  font-family: Arial, Helvetica, sans-serif
+}
 
-.header{
+
+.header {
   grid-area: header;
   font-weight: 540;
   font-size: 40px;
   text-align: center;
 
 
-    &:hover {
-  background-color: #7b8083;
+  &:hover {
+    background-color: #7b8083;
   }
 
 }
 
 
-#kalenderblatt{
+#kalenderblatt {
   grid-area: kalenderblatt;
   justify-content: center;
   align-items: center;
   border-collapse: collapse;
   margin: 30px 0;
- 
 
 
-}
-
-
-#month{
-    height: 100px;
-    font-size: 35px;
-    color: black;
 
 }
 
 
-table,th,td{
+#month {
+  height: 100px;
+  font-size: 35px;
+  color: black;
+
+}
+
+
+table,
+th,
+td {
   text-align: center;
   font-size: 1.5rem;
   text-transform: uppercase;
   margin: 25px 0;
-  
 
-  
+
+
 
 
 }
 
-th{
+th {
   background-color: #7b8083;
   font-weight: bold;
 
 }
 
 
-td{
+td {
 
   padding: 20px 40px;
   cursor: pointer;
@@ -83,50 +83,51 @@ td{
 }
 
 
-td:hover{
-    background-color: #6b5b5b;
+td:hover {
+  background-color: #6b5b5b;
 }
 
 
 
 
-#samstag, SA{
-color: darkblue;
+#samstag,
+SA {
+  color: darkblue;
 
 }
 
 
-#sonntag, SO {
-    color: darkred;
-}    
-
-
-
-td:nth-child(6){
-
-    color: darkblue;
+#sonntag,
+SO {
+  color: darkred;
 }
 
 
-td:nth-child(7){
-    color: darkred;
+
+td:nth-child(6) {
+
+  color: darkblue;
+}
+
+
+td:nth-child(7) {
+  color: darkred;
 }
 
 
 #today {
-    background-color: rgb(93, 102, 93);
+  background-color: rgb(93, 102, 93);
 }
 
 
 #text_box {
-    grid-area: text_box;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    text-align: left;
+  grid-area: text_box;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-align: left;
 }
 
 h4 {
-    margin-top: 10rem;
+  margin-top: 10rem;
 
 }
-
