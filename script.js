@@ -165,23 +165,29 @@ if (istFeiertag) {
 
 
 
+weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+ let firstDay = new Date(year, month, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
+ let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
+ let daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
+    
+    
+
+
+
+
+let counterDays = 1;
+let runDate= new Date(today)
+
+
 
 function renderCalenderStart(year, month) {     // funktion to render days
     
-    const weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-    let firstDay = new Date(year, month, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
-    let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
-    let daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
-    
-
     const tbody = document.getElementsByTagName("tbody")[0]
     // 6x wochen >> 7x tage
 
-    let runDate= new Date(today)
-    let counterDays = 1;
-
     // wochen (y bzw vertikal)
-    for (let week = 0; week < 6; week++) {
+    for (let weekdays = 0; weekdays < 6; weekdays++) {
         const row = document.createElement("tr")
 
         // tage (x bzw horizontal)
@@ -189,27 +195,42 @@ function renderCalenderStart(year, month) {     // funktion to render days
             const cell = document.createElement("td")
             cell.innerText = "1"
             row.appendChild(cell)     // an die Tabelle anhängen
-            runDate.setDate(counterDays);  // um den Tag des Monats (1–31) eines bestehenden Datums zu ändern
-            if(counterDays<=daysInMonth(today)) {
-                if(days ===weekday[runDate.getDay()]) {
-                      // Leere Zellen vor dem ersten Tag
-                cell.innerHTML = "";
-            } else if (counter <= daysInMonth) {
-                cell.innerHTML = counter;
-                counter++;
-            } else {
-                cell.innerHTML = "";
-                    cell.innerHTML = counterDays;
-                    counterDays++;
-            }
+     
 
-        }
-
-        tbody.appendChild(row)
+        
     }
 
-
+        tbody.appendChild(row)
     }
     
 }
 renderCalenderStart(2025, 7)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //    runDate.setDate(counterDays);  // um den Tag des Monats (1–31) eines bestehenden Datums zu ändern
+    //         if(counterDays<=daysInMonth(today)) {
+    //             if(days ===weekday[runDate.getDay()]) {
+    //                 cell.innerHTML = counterDays;
+    //                 counterDays++;
+    //         }
+
+    //     }
