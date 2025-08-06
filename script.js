@@ -159,6 +159,7 @@ if (istFeiertag) {
 
 
 
+
 function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
     document.getElementById("kalenderHeader").textContent = `${monthGerman} ${renderYear}`;
@@ -213,7 +214,12 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
 renderCalenderStart(2025, 7);
 
 
+
+
+
+
 ///// HELPER FUNCTIONS ////////
+
 
 function isToday(year, month, day) {
     const today = new Date();
