@@ -24,10 +24,6 @@ document.getElementById("fullDate1").textContent = todayDateFormatted;
 document.getElementById("fullDate2").textContent = todayDateFormatted;
 document.title = "Kalender" + todayDateFormatted;
 
-
-
-
-
 let weekdaysIndex = today.getDay();
 console.log('weekdaysIndex: ' + weekdaysIndex);
 
@@ -82,29 +78,23 @@ if (month === 0) {
 console.log('monthGerman: ' + monthGerman);
 document.getElementById('fullMonth').textContent = monthGerman;
 
-
-
 const monthNames = [
     'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
     'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
 ];
 
-
 function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
-
 
 for (let i = 0; i < 12; i++) {
     const days = getDaysInMonth(todayYear, i);
     console.log(monthNames[i] + ": " + days + " Tage");
 }
 
-
 let daysInMonth = getDaysInMonth(todayYear, month);
 document.getElementById('daysInMonth').textContent = daysInMonth;
 document.getElementById('monthName').textContent = monthNames[month];
-
 
 
 function getNthWeekdayInMonth(date) {
@@ -135,13 +125,10 @@ function getNthWeekdayInMonth(date) {
 }
 
 
-
 let nthWeekday = getNthWeekdayInMonth(today);
 document.getElementById('nthWeekday').textContent = nthWeekday;
 
 console.log(`Heute ist der ${nthWeekday}. ${weekday} im Monat ${monthGerman}`);
-
-
 
 
 const feiertage = [
@@ -151,7 +138,6 @@ const feiertage = [
     { monat: 11, tag: 25, name: "1. Weihnachtstag" },
     { monat: 11, tag: 26, name: "2. Weihnachtstag" }
 ];
-
 
 
 let istFeiertag = false;
@@ -170,9 +156,6 @@ if (istFeiertag) {
 } else {
     document.getElementById("holiday").textContent = "Heute ist kein gesetzlicher Feiertag in Hessen.";
 }
-
-
-
 
 
 
@@ -227,15 +210,10 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
         tbody.appendChild(row);
     }
 }
-renderCalenderStart(202, 7);
-
-
-
-
+renderCalenderStart(2025, 7);
 
 
 ///// HELPER FUNCTIONS ////////
-
 
 function isToday(year, month, day) {
     const today = new Date();
