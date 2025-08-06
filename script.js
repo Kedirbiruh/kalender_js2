@@ -100,6 +100,8 @@ let nthWeekday = getNthWeekdayInMonth(today);
 document.getElementById('nthWeekday').textContent = nthWeekday;
 
 
+// Daten für die Feiertage 
+
 const feiertage = [
     { monat: 0, tag: 1, name: "Neujahr" },
     { monat: 4, tag: 1, name: "Tag der Arbeit" },
@@ -107,6 +109,57 @@ const feiertage = [
     { monat: 11, tag: 25, name: "1. Weihnachtstag" },
     { monat: 11, tag: 26, name: "2. Weihnachtstag" }
 ];
+
+// Berechnung von Ostersonntag nach Gauß:
+function getEasterSunday(year) {
+  const a = year % 19;
+  const b = Math.floor(year / 100);
+  const c = year % 100;
+  const d = Math.floor(b / 4);
+  const e = b % 4;
+  const f = Math.floor((b + 8) / 25);
+  const g = Math.floor((b - f + 1) / 3);
+  const h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4);
+  const k = c % 4;
+  const l = (32 + 2 * e + 2 * i - h - k) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const n = (h + l - 7 * m + 114) % 31;
+  const day = n + 1;
+  const month = Math.floor((h + l - 7 * m + 114) / 31) - 1;
+  return new Date(year, month, day);
+}
+
+// Berechnung Christi Himmelfahrt anhand von Ostersonntag:
+function getHimmelfahrt(year) {
+  const easterSunday = getEasterSunday(year);
+  return new Date(easterSunday.getTime() + 39 * 24 * 60 * 60 * 1000);
+}
+// Berechnung von Pfingsten anhand von Ostersonntag:
+function getPfingsten(year) {
+  const easterSunday = getEasterSunday(year);
+  return new Date(easterSunday.getTime() + 49 * 24 * 60 * 60 * 1000);
+}
+
+
+// Berechnung von Karfreitag anhand von Ostersonntag:
+function geKarfreitag(year) {
+  const easterSunday = getEasterSunday(year);
+  return new Date(easterSunday.getTime() - 2 * 24 * 60 * 60 * 1000);
+}
+
+
+// Berechnung von  anhand von Ostersonntag:
+function getOstermontag(year) {
+  const easterSunday = getEasterSunday(year);
+  return new Date(easterSunday.getTime() + 1 * 24 * 60 * 60 * 1000);
+}
+
+// Berechnung von Fronleichnam anhand von Ostersonntag:
+function getFronleichnam(year) {
+  const easterSunday = getEasterSunday(year);
+  return new Date(easterSunday.getTime() + 60 * 24 * 60 * 60 * 1000);
+}
 
 
 let istFeiertag = false;
@@ -125,13 +178,6 @@ if (istFeiertag) {
 } else {
     document.getElementById("holiday").textContent = "Heute ist kein gesetzlicher Feiertag in Hessen.";
 }
-
-
-
-
-
-
-
 
 
 
