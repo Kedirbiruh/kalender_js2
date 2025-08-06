@@ -2,24 +2,24 @@ body {
   background-color: rgb(94, 89, 83);
   margin-right: 70px;
   margin-left: 70px;
-  background-image: url('IT.jfif')
-    /* optional */
-    background-size: cover;
+  /* background-image: url('IT.jfif'); */
+  /* optional */
+  background-size: cover;
 
 }
 
 .container {
   display: grid;
   grid-template-areas:
-    "header header"
+    "pageHeader pageHeader"
     "kalenderblatt text_box";
   grid-template-columns: 1fr 1fr;
   font-family: Arial, Helvetica, sans-serif
 }
 
 
-.header {
-  grid-area: header;
+.pageHeader {
+  grid-area: pageHeader;
   font-weight: 540;
   font-size: 40px;
   text-align: center;
@@ -44,7 +44,7 @@ body {
 }
 
 
-#month {
+#kalenderHeader {
   height: 100px;
   font-size: 35px;
   color: black;
@@ -59,10 +59,6 @@ td {
   font-size: 1.5rem;
   text-transform: uppercase;
   margin: 25px 0;
-
-
-
-
 
 }
 
@@ -80,6 +76,13 @@ td {
   background-color: rgb(134, 134, 132);
 
 
+}
+
+.ausgrauen {
+  color: #ccc;
+  /* Hellgrau */
+  opacity: 0.6;
+  /* Etwas transparenter */
 }
 
 
@@ -115,8 +118,8 @@ td:nth-child(7) {
 }
 
 
-#today {
-  background-color: rgb(93, 102, 93);
+.today {
+  background-color: #7b8083;
 }
 
 

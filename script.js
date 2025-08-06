@@ -1,28 +1,28 @@
 
 let today = new Date();
-let day = today.getDate();
+let todayDay = today.getDate();
 
-let dayFormatted;
-if (day < 10) {
-    dayFormatted = '0' + day;
+let todayDayFormatted;
+if (todayDay < 10) {
+    todayDayFormatted = '0' + todayDay;
 } else {
-    dayFormatted = day;
+    todayDayFormatted = todayDay;
 }
 
 let month = today.getMonth();
-let monthFormatted;
+let todayMonthFormatted;
 if (month + 1 < 10) {
-    monthFormatted = '0' + (month + 1);
+    todayMonthFormatted = '0' + (month + 1);
 } else {
-    monthFormatted = month + 1;
+    todayMonthFormatted = month + 1;
 }
 
-let year = today.getFullYear();
-let dateFormatted = dayFormatted + '.' + monthFormatted + '.' + year;
+let todayYear = today.getFullYear();
+let todayDateFormatted = todayDayFormatted + '.' + todayMonthFormatted + '.' + todayYear;
 
-document.getElementById("fullDate1").textContent = dateFormatted;
-document.getElementById("fullDate2").textContent = dateFormatted;
-document.title = "Kalender" + dateFormatted;
+document.getElementById("fullDate1").textContent = todayDateFormatted;
+document.getElementById("fullDate2").textContent = todayDateFormatted;
+document.title = "Kalender" + todayDateFormatted;
 
 
 
@@ -96,12 +96,12 @@ function getDaysInMonth(year, month) {
 
 
 for (let i = 0; i < 12; i++) {
-    const days = getDaysInMonth(year, i);
+    const days = getDaysInMonth(todayYear, i);
     console.log(monthNames[i] + ": " + days + " Tage");
 }
 
 
-let daysInMonth = getDaysInMonth(year, month);
+let daysInMonth = getDaysInMonth(todayYear, month);
 document.getElementById('daysInMonth').textContent = daysInMonth;
 document.getElementById('monthName').textContent = monthNames[month];
 
@@ -176,21 +176,16 @@ if (istFeiertag) {
 
 
 
+function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
+    document.getElementById("kalenderHeader").textContent = `${monthGerman} ${renderYear}`;
+    // document.getElementById("kalenderHeader").textContent = monthGerman + ' ' + renderYear;
 
-// function isToday(year, monat, day)
-
-
-
-function renderCalenderStart(year, month) {     // funktion to render days
-    
     const weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-    let firstDay = new Date(year, month, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
+    let firstDay = new Date(renderYear, renderMonth, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
     let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
-    const daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
-    const daysInLastMonth = new Date(year, month, 0).getDate();
-    const daysInNexttMonth = new Date(year, month + 2, 0).getDate();
-
+    const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
+    const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate();
 
 
 
@@ -198,36 +193,57 @@ function renderCalenderStart(year, month) {     // funktion to render days
     // 6x wochen >> 7x tage
     let dayInCurrentMonth = -startDay;
 
-        // wochen (y bzw vertikal)
-    for (let weeks = 0; weeks < 6; weeks++) {
+    // wochen (y bzw vertikal)
+    for (let renderWeek = 0; renderWeek < 6; renderWeek++) {
         const row = document.createElement("tr");
 
         // tage (x bzw horizontal)
-        for (let days = 0; days < 7; days++) {
+        for (let renderWeekDay = 0; renderWeekDay < 7; renderWeekDay++) {
             const cell = document.createElement("td");
             dayInCurrentMonth++;
             if (dayInCurrentMonth <= 0) {
                 // Stelle ausgegraut dar
                 cell.innerText = dayInCurrentMonth + daysInLastMonth;
+                cell.classList.add("ausgrauen");
+
+            } else if (dayInCurrentMonth > daysInMonth) {
+                // Stelle ausgegraut dar
+                let dayNextMonth = dayInCurrentMonth - daysInMonth;
+                // Stelle ausgegraut dar
+                cell.innerText = dayNextMonth;
+                cell.classList.add("ausgrauen");
             } else {
                 // Normale Zelle
-            cell.innerText = dayInCurrentMonth;
+                cell.innerText = dayInCurrentMonth;
+
+                if (isToday(renderYear, renderMonth, dayInCurrentMonth)) {
+                    cell.classList.add("today")
+                }
+
             }
-            
+
             row.appendChild(cell);
         }
         tbody.appendChild(row);
     }
 }
-renderCalenderStart(2025, 7);
+renderCalenderStart(202, 7);
 
 
 
 
 
 
+///// HELPER FUNCTIONS ////////
 
 
-
+function isToday(year, month, day) {
+    const today = new Date();
+    return (
+        today.getFullYear() === year &&
+        today.getMonth() === month &&
+        today.getDate() === day
+    );
+}
 
 
