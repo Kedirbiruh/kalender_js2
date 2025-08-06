@@ -33,7 +33,18 @@ console.log('weekdaysIndex: ' + weekdaysIndex);
 
 let weekday;
 if (weekdaysIndex === 0) {
-    we~
+    weekday = 'Sonntag';
+} else if (weekdaysIndex === 1) {
+    weekday = 'Montag';
+} else if (weekdaysIndex === 2) {
+    weekday = 'Dienstag';
+} else if (weekdaysIndex === 3) {
+    weekday = 'Mittwoch';
+} else if (weekdaysIndex === 4) {
+    weekday = 'Donnerstag';
+} else if (weekdaysIndex === 5) {
+    weekday = 'Freitag';
+} else {
     weekday = 'Samstag';
 }
 
@@ -165,46 +176,50 @@ if (istFeiertag) {
 
 
 
-weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-
- let firstDay = new Date(year, month, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
- let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
- let daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
-    
-    
 
 
-
-
-let counterDays = 1;
-let runDate= new Date(today)
+// function isToday(year, monat, day)
 
 
 
 function renderCalenderStart(year, month) {     // funktion to render days
     
-    const tbody = document.getElementsByTagName("tbody")[0]
-    // 6x wochen >> 7x tage
+    const weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+    let firstDay = new Date(year, month, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
+    let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
+    const daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
+    const daysInLastMonth = new Date(year, month, 0).getDate();
+    const daysInNexttMonth = new Date(year, month + 2, 0).getDate();
 
-    // wochen (y bzw vertikal)
-    for (let weekdays = 0; weekdays < 6; weekdays++) {
-        const row = document.createElement("tr")
+
+
+
+    const tbody = document.getElementsByTagName("tbody")[0];
+    // 6x wochen >> 7x tage
+    let dayInCurrentMonth = -startDay;
+
+        // wochen (y bzw vertikal)
+    for (let weeks = 0; weeks < 6; weeks++) {
+        const row = document.createElement("tr");
 
         // tage (x bzw horizontal)
-        for (let days = 0; days < 7; days++) {              
-            const cell = document.createElement("td")
-            cell.innerText = "1"
-            row.appendChild(cell)     // an die Tabelle anhängen
-     
-
-        
+        for (let days = 0; days < 7; days++) {
+            const cell = document.createElement("td");
+            dayInCurrentMonth++;
+            if (dayInCurrentMonth <= 0) {
+                // Stelle ausgegraut dar
+                cell.innerText = dayInCurrentMonth + daysInLastMonth;
+            } else {
+                // Normale Zelle
+            cell.innerText = dayInCurrentMonth;
+            }
+            
+            row.appendChild(cell);
+        }
+        tbody.appendChild(row);
     }
-
-        tbody.appendChild(row)
-    }
-    
 }
-renderCalenderStart(2025, 7)
+renderCalenderStart(2025, 7);
 
 
 
@@ -216,21 +231,3 @@ renderCalenderStart(2025, 7)
 
 
 
-
-
-
-
-
-
-
-
-
-
-    //    runDate.setDate(counterDays);  // um den Tag des Monats (1–31) eines bestehenden Datums zu ändern
-    //         if(counterDays<=daysInMonth(today)) {
-    //             if(days ===weekday[runDate.getDay()]) {
-    //                 cell.innerHTML = counterDays;
-    //                 counterDays++;
-    //         }
-
-    //     }
