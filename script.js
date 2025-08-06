@@ -9,12 +9,12 @@ if (todayDay < 10) {
     todayDayFormatted = todayDay;
 }
 
-let month = today.getMonth();
+let todayMonth = today.getMonth();
 let todayMonthFormatted;
-if (month + 1 < 10) {
-    todayMonthFormatted = '0' + (month + 1);
+if (todayMonth + 1 < 10) {
+    todayMonthFormatted = '0' + (todayMonth + 1);
 } else {
-    todayMonthFormatted = month + 1;
+    todayMonthFormatted = todayMonth + 1;
 }
 
 let todayYear = today.getFullYear();
@@ -48,35 +48,9 @@ console.log('weekday: ' + weekday);
 document.getElementById('fullWeekday1').textContent = weekday;
 document.getElementById('fullWeekday2').textContent = weekday;
 
-let monthGerman;
-if (month === 0) {
-    monthGerman = 'Januar';
-} else if (month === 1) {
-    monthGerman = 'Februar';
-} else if (month === 2) {
-    monthGerman = 'März';
-} else if (month === 3) {
-    monthGerman = 'April';
-} else if (month === 4) {
-    monthGerman = 'Mai';
-} else if (month === 5) {
-    monthGerman = 'Juni';
-} else if (month === 6) {
-    monthGerman = 'Juli';
-} else if (month === 7) {
-    monthGerman = 'August';
-} else if (month === 8) {
-    monthGerman = 'September';
-} else if (month === 9) {
-    monthGerman = 'Oktober';
-} else if (month === 10) {
-    monthGerman = 'November';
-} else {
-    monthGerman = 'Dezember';
-}
 
-console.log('monthGerman: ' + monthGerman);
-document.getElementById('fullMonth').textContent = monthGerman;
+
+document.getElementById('fullMonth').textContent = getMonthGerman(todayMonth);
 
 const monthNames = [
     'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
@@ -92,9 +66,9 @@ for (let i = 0; i < 12; i++) {
     console.log(monthNames[i] + ": " + days + " Tage");
 }
 
-let daysInMonth = getDaysInMonth(todayYear, month);
+let daysInMonth = getDaysInMonth(todayYear, todayMonth);
 document.getElementById('daysInMonth').textContent = daysInMonth;
-document.getElementById('monthName').textContent = monthNames[month];
+document.getElementById('monthName').textContent = monthNames[todayMonth];
 
 
 function getNthWeekdayInMonth(date) {
@@ -128,7 +102,7 @@ function getNthWeekdayInMonth(date) {
 let nthWeekday = getNthWeekdayInMonth(today);
 document.getElementById('nthWeekday').textContent = nthWeekday;
 
-console.log(`Heute ist der ${nthWeekday}. ${weekday} im Monat ${monthGerman}`);
+console.log(`Heute ist der ${nthWeekday}. ${weekday} im Monat ${getMonthGerman(todayMonth)}`);
 
 
 const feiertage = [
@@ -162,7 +136,7 @@ if (istFeiertag) {
 
 function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
-    document.getElementById("kalenderHeader").textContent = `${monthGerman} ${renderYear}`;
+    document.getElementById("kalenderHeader").textContent = `${getMonthGerman(renderMonth)} ${renderYear}`;
     // document.getElementById("kalenderHeader").textContent = monthGerman + ' ' + renderYear;
 
     const weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
@@ -204,7 +178,7 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
                     cell.classList.add("today");
                 }
                 if (isAndreSBirthday(renderMonth, dayInCurrentMonth)) {
-                cell.classList.add("AndreSBirthday");
+                    cell.classList.add("AndreSBirthday");
                 }
 
 
@@ -215,15 +189,42 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
         tbody.appendChild(row);
     }
 }
-renderCalenderStart(todayYear, month);
-
-
-
+renderCalenderStart(2025, 7);
 
 
 
 ///// HELPER FUNCTIONS ////////
 
+function getMonthGerman(month) {
+    let monthGerman;
+    if (month === 0) {
+        monthGerman = 'Januar';
+    } else if (month === 1) {
+        monthGerman = 'Februar';
+    } else if (month === 2) {
+        monthGerman = 'März';
+    } else if (month === 3) {
+        monthGerman = 'April';
+    } else if (month === 4) {
+        monthGerman = 'Mai';
+    } else if (month === 5) {
+        monthGerman = 'Juni';
+    } else if (month === 6) {
+        monthGerman = 'Juli';
+    } else if (month === 7) {
+        monthGerman = 'August';
+    } else if (month === 8) {
+        monthGerman = 'September';
+    } else if (month === 9) {
+        monthGerman = 'Oktober';
+    } else if (month === 10) {
+        monthGerman = 'November';
+    } else {
+        monthGerman = 'Dezember';
+    }
+
+    return monthGerman;
+}
 
 function isToday(year, month, day) {
     const today = new Date();
