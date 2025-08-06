@@ -25,7 +25,6 @@ document.getElementById("fullDate2").textContent = todayDateFormatted;
 document.title = "Kalender" + todayDateFormatted;
 
 let weekdaysIndex = today.getDay();
-console.log('weekdaysIndex: ' + weekdaysIndex);
 
 let weekday;
 if (weekdaysIndex === 0) {
@@ -44,7 +43,6 @@ if (weekdaysIndex === 0) {
     weekday = 'Samstag';
 }
 
-console.log('weekday: ' + weekday);
 document.getElementById('fullWeekday1').textContent = weekday;
 document.getElementById('fullWeekday2').textContent = weekday;
 
@@ -63,7 +61,6 @@ function getDaysInMonth(year, month) {
 
 for (let i = 0; i < 12; i++) {
     const days = getDaysInMonth(todayYear, i);
-    console.log(monthNames[i] + ": " + days + " Tage");
 }
 
 let daysInMonth = getDaysInMonth(todayYear, todayMonth);
@@ -102,8 +99,6 @@ function getNthWeekdayInMonth(date) {
 let nthWeekday = getNthWeekdayInMonth(today);
 document.getElementById('nthWeekday').textContent = nthWeekday;
 
-console.log(`Heute ist der ${nthWeekday}. ${weekday} im Monat ${getMonthGerman(todayMonth)}`);
-
 
 const feiertage = [
     { monat: 0, tag: 1, name: "Neujahr" },
@@ -134,6 +129,12 @@ if (istFeiertag) {
 
 
 
+
+
+
+
+
+
 function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
     document.getElementById("kalenderHeader").textContent = `${getMonthGerman(renderMonth)} ${renderYear}`;
@@ -143,17 +144,15 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
     const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate();
 
-
-
     const tbody = document.getElementsByTagName("tbody")[0];
     // 6x wochen >> 7x tage
     let dayInCurrentMonth = -startDay;
 
-    // wochen (y bzw vertikal)
+    // wochen (y bzw. vertikal)
     for (let renderWeek = 0; renderWeek < 6; renderWeek++) {
         const row = document.createElement("tr");
 
-        // tage (x bzw horizontal)
+        // tage (x bzw. horizontal)
         for (let renderWeekDay = 0; renderWeekDay < 7; renderWeekDay++) {
             const cell = document.createElement("td");
             dayInCurrentMonth++;

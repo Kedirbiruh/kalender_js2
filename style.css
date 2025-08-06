@@ -21,7 +21,7 @@ body {
 .pageHeader {
   grid-area: pageHeader;
   font-weight: 540;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
 
 
@@ -32,7 +32,7 @@ body {
 }
 
 
-#kalenderblatt {
+#KALENDERBLATT {
   grid-area: kalenderblatt;
   justify-content: center;
   align-items: center;
@@ -79,15 +79,13 @@ td {
 }
 
 .ausgrauen {
-  color: #ccc;
-  /* Hellgrau */
+  color: rgb(77, 76, 76);
   opacity: 0.6;
-  /* Etwas transparenter */
 }
 
 
 td:hover {
-  background-color: #6b5b5b;
+  background-color: #7b8083;
 }
 
 
@@ -119,14 +117,13 @@ td:nth-child(7) {
 
 
 .AndreSBirthday {
-  background-color: rgb(68, 67, 62);
-  color: black;
+  background-color: rgb(90, 134, 93);
   border: 2px solid rgb(103, 101, 97);
-  border-radius: 50%;
+  
 }
 
 .today {
-  background-color: #648da5;
+  background-color: #517386;
 }
 
 
