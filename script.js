@@ -137,8 +137,6 @@ if (istFeiertag) {
 function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
     document.getElementById("kalenderHeader").textContent = `${getMonthGerman(renderMonth)} ${renderYear}`;
-    // document.getElementById("kalenderHeader").textContent = monthGerman + ' ' + renderYear;
-
     const weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
     let firstDay = new Date(renderYear, renderMonth, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
     let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
