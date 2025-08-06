@@ -165,17 +165,13 @@ if (istFeiertag) {
 
 
 
-weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
+
+
+weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
  let firstDay = new Date(year, month, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
  let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
- let daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
-    
-    
-
-
-
-
+ let daysInMonth = new Date(year, month + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat haben
 let counterDays = 1;
 let runDate= new Date(today)
 
