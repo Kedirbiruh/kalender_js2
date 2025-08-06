@@ -117,17 +117,17 @@ td:nth-child(7) {
   color: darkred;
 }
 
-/* 
+
 .AndreSBirthday {
-  background-color: gold;
+  background-color: rgb(68, 67, 62);
   color: black;
-  border: 2px solid orange;
+  border: 2px solid rgb(103, 101, 97);
   border-radius: 50%;
   font-weight: bold;
-} */
+}
 
 .today {
-  background-color: #7b8083;
+  background-color: #648da5;
 }
 
 

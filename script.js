@@ -201,8 +201,12 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
                 cell.innerText = dayInCurrentMonth;
 
                 if (isToday(renderYear, renderMonth, dayInCurrentMonth)) {
-                    cell.classList.add("today")
+                    cell.classList.add("today");
                 }
+                if (isAndreSBirthday(renderMonth, dayInCurrentMonth)) {
+                cell.classList.add("AndreSBirthday");
+                }
+
 
             }
 
@@ -211,7 +215,7 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
         tbody.appendChild(row);
     }
 }
-renderCalenderStart(2025, 7);
+renderCalenderStart(todayYear, month);
 
 
 
@@ -229,5 +233,11 @@ function isToday(year, month, day) {
         today.getDate() === day
     );
 }
+
+function isAndreSBirthday(month, day) {
+    return month === 7 && day === 6;
+}
+
+
 
 
