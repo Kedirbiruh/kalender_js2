@@ -66,8 +66,7 @@ for (let i = 0; i < 12; i++) {
 let daysInMonth = getDaysInMonth(todayYear, todayMonth);
 document.getElementById('daysInMonth').textContent = daysInMonth;
 document.getElementById('monthName').textContent = monthNames[todayMonth];
-
-// document.getElementById("currentYear").textContent = `${todayYear(renderYear)}`;
+document.getElementById("currentYear").textContent = todayYear;
 
 
 function getNthWeekdayInMonth(date) {
@@ -184,14 +183,18 @@ if (istFeiertag) {
 
 function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
-    document.getElementById("kalenderHeader").textContent = `${getMonthGerman(renderMonth)} ${renderYear}`;
+    document.getElementById("kalenderHeader").textContent = `${getMonthGerman(todayMonth)} ${todayYear}`;
     const weekdayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
     let firstDay = new Date(renderYear, renderMonth, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
     let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
-    const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate();
+    const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate(); // Um zu wissen, welche Tage aus dem Vormonat angezeigt werden müssen
 
     
+
+
+    // const prevLastDay = new Date(year, month, 0);       // Der letzte Tag des Vormonats
+    // const daysInPrevMonth = prevLastDay.getDate();
 
 
 
