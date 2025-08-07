@@ -22,7 +22,7 @@ let todayDateFormatted = todayDayFormatted + '.' + todayMonthFormatted + '.' + t
 
 document.getElementById("fullDate1").textContent = todayDateFormatted;
 document.getElementById("fullDate2").textContent = todayDateFormatted;
-document.title = "Kalender" + todayDateFormatted;
+document.title = "Kalender " + todayDateFormatted;
 
 let weekdaysIndex = today.getDay();
 
@@ -66,6 +66,8 @@ for (let i = 0; i < 12; i++) {
 let daysInMonth = getDaysInMonth(todayYear, todayMonth);
 document.getElementById('daysInMonth').textContent = daysInMonth;
 document.getElementById('monthName').textContent = monthNames[todayMonth];
+
+// document.getElementById("currentYear").textContent = `${todayYear(renderYear)}`;
 
 
 function getNthWeekdayInMonth(date) {
@@ -180,7 +182,6 @@ if (istFeiertag) {
 }
 
 
-
 function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
 
     document.getElementById("kalenderHeader").textContent = `${getMonthGerman(renderMonth)} ${renderYear}`;
@@ -189,6 +190,16 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
     let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
     const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate();
+
+    
+
+
+
+
+
+
+
+
 
     const tbody = document.getElementsByTagName("tbody")[0];
     // 6x wochen >> 7x tage
@@ -223,6 +234,16 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
                 if (isAndreSBirthday(renderMonth, dayInCurrentMonth)) {
                     cell.classList.add("AndreSBirthday");
                 }
+
+
+
+
+
+
+
+
+
+
 
 
             }
