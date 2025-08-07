@@ -89,43 +89,31 @@ td:hover {
 }
 
 
-
-
-#samstag,
+.samstag,
 SA {
   color: darkblue;
 
 }
 
 
-#sonntag,
+.sonntag,
 SO {
   color: darkred;
 }
 
-
-
-td:nth-child(6) {
-
-  color: darkblue;
-}
-
-
-td:nth-child(7) {
-  color: darkred;
-}
-
-
-.AndreSBirthday {
+.Andre’sBirthday {
   border: 2px solid rgb(103, 72, 4);
 
-  
+
 }
 
 .today {
-  background-color: rgb(90, 134, 93); 
+  background-color: rgb(90, 134, 93);
 }
 
+.feiertag {
+  background-color: red;
+}
 
 #text_box {
   grid-area: text_box;
