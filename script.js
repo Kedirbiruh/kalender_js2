@@ -209,7 +209,7 @@ function renderCalenderStart2(renderYear, renderMonth) {     // funktion to rend
         if (isToday2(day)) {
             cell.classList.add("today");
         }
-        if (isAndreBirthday(day.getFullYear(), day.getMonth())) {
+        if (isAndreBirthday(day.getFullYear(6), day.getMonth(7))) {
             cell.classList.add("Andre’sBirthday");
         }
         if (getFeiertag(day)) {
