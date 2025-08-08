@@ -221,7 +221,7 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
     let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
     const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate(); // Um zu wissen, welche Tage aus dem Vormonat angezeigt werden müssen
-    // const feiertagsName = pruefeFeiertag(today, feiertage);
+ 
 
     const tbody = document.getElementsByTagName("tbody")[0];
     // 6x wochen >> 7x tage
@@ -235,17 +235,17 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
         for (let renderWeekDay = 0; renderWeekDay < 7; renderWeekDay++) {
             const cell = document.createElement("td");
             dayInCurrentMonth++;
-            if (dayInCurrentMonth < 1) {
+            if (dayInCurrentMonth <= 0) {
                 // Stelle ausgegraut dar
                 cell.innerText = dayInCurrentMonth + daysInLastMonth;
-                cell.classList.add("ausgrauen");
+                cell.classList.add("offsets");
 
             } else if (dayInCurrentMonth > daysInMonth) {
                 // Stelle ausgegraut dar
                 let dayNextMonth = dayInCurrentMonth - daysInMonth;
                 // Stelle ausgegraut dar
                 cell.innerText = dayNextMonth;
-                cell.classList.add("ausgrauen");
+                cell.classList.add("offsets");
             } else {
                 // Normale Zelle
                 cell.innerText = dayInCurrentMonth;
