@@ -1,5 +1,5 @@
 
-let today = new Date(2024, 4, 1);
+let today = new Date();
 let todayDay = today.getDate();
 
 let todayDayFormatted;
@@ -158,6 +158,7 @@ function getFronleichnam(year) {
 let istFeiertag = false;
 let feiertagsName = "";
 
+
 for (let f of feiertage) {
     if (f.monat === today.getMonth() && f.tag === today.getDate()) {
         istFeiertag = true;
@@ -165,7 +166,6 @@ for (let f of feiertage) {
         break;
     }
 }
-
 
 if (istFeiertag) {
     document.getElementById("holiday").textContent = `Heute ist ein gesetzlicher Feiertag in Hessen: ${feiertagsName}.`;
@@ -221,7 +221,7 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
     let startDay = (firstDay.getDay() + 6) % 7;         // um Sonntag=6, Montag=0 zu bekommen
     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
     const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate(); // Um zu wissen, welche Tage aus dem Vormonat angezeigt werden müssen
-
+    // const feiertagsName = pruefeFeiertag(today, feiertage);
 
     const tbody = document.getElementsByTagName("tbody")[0];
     // 6x wochen >> 7x tage
@@ -256,9 +256,9 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
                 if (isAndreBirthday(renderMonth, dayInCurrentMonth)) {
                     cell.classList.add("Andre’sBirthday");
                 }
-                if (isFeiertag(renderYear, renderMonth, dayInCurrentMonth)) {
-                    cell.classList.add("feiertag");
-                }
+                // if (feiertagsName)(month, tag){
+                //     cell.classList.add("feiertag");
+                // }
                 if (renderWeekDay == 5)
                     cell.classList.add("samstag");
                 else if (renderWeekDay == 6)
@@ -270,6 +270,7 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
         }
         tbody.appendChild(row);
     }
+
 }
 renderCalenderStart(2025, 7);
 
@@ -321,9 +322,12 @@ function isAndreBirthday(month, day) {
     return month === 7 && day === 6;
 }
 
-function isFeiertag(year, month, day) {
-    return istFeiertag;
-}
+// function isFeiertag(year, month, day) {
+//     return istFeiertag;
+// }
+
+
+
 
 
 
