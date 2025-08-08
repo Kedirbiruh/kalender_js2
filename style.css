@@ -26,10 +26,6 @@ body {
    text-align: center;
    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
-
-  &:hover {
-   background-color:rgb(197, 192, 192);
-  }
 }
 
 #KALENDERBLATT {
@@ -113,9 +109,8 @@ SO {
 }
 
 .feiertag {
-  background-color: #f8d7da; /* sanftes Rosa für Feiertage */
+  background-color: #f8d7da;
   color: #721c24;
-  font-weight: bold;
 }
 
 
