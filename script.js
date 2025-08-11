@@ -13,7 +13,7 @@ document.getElementById("fullDate2").textContent = todayDateFormatted;
 document.title = "Kalender " + todayDateFormatted;
 
 let weekdaysIndex = today.getDay();
-let weekday = getWeekdayGerman[weekdaysIndex];
+let weekday = getWeekdayGerman(weekdaysIndex);
 
 document.getElementById('fullWeekday1').textContent = weekday;
 document.getElementById('fullWeekday2').textContent = weekday;
@@ -21,7 +21,7 @@ document.getElementById('fullMonth').textContent = getMonthGerman(todayMonth);
 
 let daysInMonth = getDaysInMonth(todayYear, todayMonth);
 document.getElementById('daysInMonth').textContent = daysInMonth;
-document.getElementById('monthName').textContent = getMonthGerman[todayMonth];
+document.getElementById('monthName').textContent = getMonthGerman(todayMonth);
 document.getElementById("currentYear").textContent = todayYear;
 
 let nthWeekday = getNthWeekdayInMonth(today);
