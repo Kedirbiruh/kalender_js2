@@ -222,7 +222,6 @@ function renderCalenderStart(renderYear, renderMonth) {     // funktion to rende
     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
     const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate(); // Um zu wissen, welche Tage aus dem Vormonat angezeigt werden müssen
  
-
     const tbody = document.getElementsByTagName("tbody")[0];
     // 6x wochen >> 7x tage
     let dayInCurrentMonth = -startDay;
