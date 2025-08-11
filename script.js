@@ -77,6 +77,7 @@ function getFeiertag(datum) {
     return false;
 }
 
+
 // Berechnung von Ostersonntag nach Gauß:
 function getEasterSunday(year) {
     const a = year % 19;
@@ -152,7 +153,7 @@ function renderCalenderStart2(renderYear, renderMonth) {     // funktion to rend
         if (isToday2(day)) {
             cell.classList.add("today");
         }
-        if (isAndreBirthday(day.getFullYear(6), day.getMonth(7))) {
+        if (isAndreBirthday(day.getMonth(), day.getDate())) {
             cell.classList.add("Andre’sBirthday");
         }
         if (getFeiertag(day)) {
