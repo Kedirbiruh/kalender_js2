@@ -1,7 +1,7 @@
-let today = new Date();
+let today = new Date(2025, 5, 1);
 let todayDay = today.getDate();
-
 let todayDayFormatted = todayDay.toString().padStart(2, '0');
+
 let todayMonth = today.getMonth();
 let todayMonthFormatted = (todayMonth + 1).toString().padStart(2, '0');
 
@@ -127,62 +127,62 @@ function getFronleichnam(year) {
     return new Date(easterSunday.getFullYear(), easterSunday.getMonth(), easterSunday.getDate() + 60);
 }
 
-function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
-    document.getElementById("kalenderHeader").textContent = `${getMonthGerman(todayMonth)} ${todayYear}`;
-    let firstDay = new Date(renderYear, renderMonth, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
-    let startDay = (firstDay.getDay() + 6) % 7;          // um Sonntag=6, Montag=0 zu bekommen
-    const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
-    const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate(); // Um zu wissen, welche Tage aus dem Vormonat angezeigt werden müssen
+// function renderCalenderStart(renderYear, renderMonth) {     // funktion to render days
+//     document.getElementById("kalenderHeader").textContent = `${getMonthGerman(todayMonth)} ${todayYear}`;
+//     let firstDay = new Date(renderYear, renderMonth, 1); // um herauszufinden, auf welchen Wochentag der 1. Tag des Monats fällt
+//     let startDay = (firstDay.getDay() + 6) % 7;          // um Sonntag=6, Montag=0 zu bekommen
+//     const daysInMonth = new Date(renderYear, renderMonth + 1, 0).getDate(); // um herauszufinden, wie viele Tage der aktuelle Monat hat
+//     const daysInLastMonth = new Date(renderYear, renderMonth, 0).getDate(); // Um zu wissen, welche Tage aus dem Vormonat angezeigt werden müssen
 
-    const tbody = document.getElementsByTagName("tbody")[0];
-    // 6x wochen >> 7x tage
-    let dayInCurrentMonth = -startDay;
+//     const tbody = document.getElementsByTagName("tbody")[0];
+//     // 6x wochen >> 7x tage
+//     let dayInCurrentMonth = -startDay;
 
-    // wochen (y bzw. vertikal)
-    for (let renderWeek = 0; renderWeek < 6; renderWeek++) {
-        const row = document.createElement("tr");
+//     // wochen (y bzw. vertikal)
+//     for (let renderWeek = 0; renderWeek < 6; renderWeek++) {
+//         const row = document.createElement("tr");
 
-        // tage (x bzw. horizontal)
-        for (let renderWeekDay = 0; renderWeekDay < 7; renderWeekDay++) {
-            const cell = document.createElement("td");
-            dayInCurrentMonth++;
-            if (dayInCurrentMonth <= 0) {
-                // Stelle ausgegraut dar
-                cell.innerText = dayInCurrentMonth + daysInLastMonth;
-                cell.classList.add("offsets");
+//         // tage (x bzw. horizontal)
+//         for (let renderWeekDay = 0; renderWeekDay < 7; renderWeekDay++) {
+//             const cell = document.createElement("td");
+//             dayInCurrentMonth++;
+//             if (dayInCurrentMonth <= 0) {
+//                 // Stelle ausgegraut dar
+//                 cell.innerText = dayInCurrentMonth + daysInLastMonth;
+//                 cell.classList.add("offsets");
 
-            } else if (dayInCurrentMonth > daysInMonth) {
-                // Stelle ausgegraut dar
-                let dayNextMonth = dayInCurrentMonth - daysInMonth;
-                // Stelle ausgegraut dar
-                cell.innerText = dayNextMonth;
-                cell.classList.add("offsets");
-            } else {
-                // Normale Zelle
-                cell.innerText = dayInCurrentMonth;
+//             } else if (dayInCurrentMonth > daysInMonth) {
+//                 // Stelle ausgegraut dar
+//                 let dayNextMonth = dayInCurrentMonth - daysInMonth;
+//                 // Stelle ausgegraut dar
+//                 cell.innerText = dayNextMonth;
+//                 cell.classList.add("offsets");
+//             } else {
+//                 // Normale Zelle
+//                 cell.innerText = dayInCurrentMonth;
 
-                if (isToday(renderYear, renderMonth, dayInCurrentMonth)) {
-                    cell.classList.add("today");
-                }
-                if (isAndreBirthday(renderMonth, dayInCurrentMonth)) {
-                    cell.classList.add("Andre’sBirthday");
-                }
-                // if (feiertagsName)(month, tag){
-                //     cell.classList.add("feiertag");
-                // }
-                if (renderWeekDay == 5)
-                    cell.classList.add("samstag");
-                else if (renderWeekDay == 6)
-                    cell.classList.add("sonntag")
+//                 if (isToday(renderYear, renderMonth, dayInCurrentMonth)) {
+//                     cell.classList.add("today");
+//                 }
+//                 if (isAndreBirthday(renderMonth, dayInCurrentMonth)) {
+//                     cell.classList.add("Andre’sBirthday");
+//                 }
+//                 // if (feiertagsName)(month, tag){
+//                 //     cell.classList.add("feiertag");
+//                 // }
+//                 if (renderWeekDay == 5)
+//                     cell.classList.add("samstag");
+//                 else if (renderWeekDay == 6)
+//                     cell.classList.add("sonntag")
 
-            }
+//             }
 
-            row.appendChild(cell);
-        }
-        tbody.appendChild(row);
-    }
+//             row.appendChild(cell);
+//         }
+//         tbody.appendChild(row);
+//     }
 
-}
+// }
 
 function renderCalenderStart2(renderYear, renderMonth) {     // funktion to render days
     document.getElementById("kalenderHeader").textContent = `${getMonthGerman(todayMonth)} ${todayYear}`;
@@ -209,8 +209,8 @@ function renderCalenderStart2(renderYear, renderMonth) {     // funktion to rend
         if (isToday2(day)) {
             cell.classList.add("today");
         }
-        if (isAndreBirthday(day.getFullYear(6), day.getMonth(7))) {
-            cell.classList.add("Andre’sBirthday");
+        if (isAndreBirthday(day.getMonth(7), day.getDate(6))) {
+            cell.classList.add("AndresBirthday");
         }
         if (getFeiertag(day)) {
             cell.classList.add("feiertag");
@@ -228,54 +228,13 @@ function renderCalenderStart2(renderYear, renderMonth) {     // funktion to rend
         }
     }
 
-    // // 6x wochen >> 7x tage
-    // let dayInCurrentMonth = -startDay;
-
-    // // wochen (y bzw. vertikal)
-    // for (let renderWeek = 0; renderWeek < 6; renderWeek++) {
-    //     const row = document.createElement("tr");
-
-    //     // tage (x bzw. horizontal)
-    //     for (let renderWeekDay = 0; renderWeekDay < 7; renderWeekDay++) {
-    //         const cell = document.createElement("td");
-    //         dayInCurrentMonth++;
-    //         if (dayInCurrentMonth <= 0) {
-    //             // Stelle ausgegraut dar
-    //             cell.innerText = dayInCurrentMonth + daysInLastMonth;
-    //             cell.classList.add("offsets");
-
-    //         } else if (dayInCurrentMonth > daysInMonth) {
-    //             // Stelle ausgegraut dar
-    //             let dayNextMonth = dayInCurrentMonth - daysInMonth;
-    //             // Stelle ausgegraut dar
-    //             cell.innerText = dayNextMonth;
-    //             cell.classList.add("offsets");
-    //         } else {
-    //             // Normale Zelle
-    //             cell.innerText = dayInCurrentMonth;
-
-    //             if (isToday(renderYear, renderMonth, dayInCurrentMonth)) {
-    //                 cell.classList.add("today");
-    //             }
-    //             if (isAndreBirthday(renderMonth, dayInCurrentMonth)) {
-    //                 cell.classList.add("Andre’sBirthday");
-    //             }
-    //             // if (feiertagsName)(month, tag){
-    //             //     cell.classList.add("feiertag");
-    //             // }
-    //             if (renderWeekDay == 5)
-    //                 cell.classList.add("samstag");
-    //             else if (renderWeekDay == 6)
-    //                 cell.classList.add("sonntag")
-
-    //         }
-
-    //         row.appendChild(cell);
-    //     }
-    //     tbody.appendChild(row);
-    // }
 
 }
+
+
+
+
+
 
 function getMonthGerman(month) {
     const monthNames = [
@@ -310,30 +269,57 @@ function getNthWeekdayInMonth(date) {
         ordinal = 'fünfte';
     }
     return ordinal;
-}
-
-function getNthWeekdayInMonth2(date) {
+    
+function getNthWeekdayInMonth(date) {
+    const weekdaysIndex = date.getDay();
     const dayOfMonth = date.getDate();
-    if (dayOfMonth < 8) return 'erster';
-    if (dayOfMonth < 15) return 'zweiter';
-    if (dayOfMonth < 22) return 'dritter';
-    if (dayOfMonth < 29) return 'vierter';
-    return 'fünfter';
+    let count = 0;
+
+    for (let d = 1; d <= dayOfMonth; d++) {
+        let current = new Date(date.getFullYear(), date.getMonth(), d);
+        if (current.getDay() === weekdaysIndex) {
+            count++;
+        }
+    }
+
+    let ordinal;
+    if (count === 1) {
+        ordinal = 'erste';
+    } else if (count === 2) {
+        ordinal = 'zweite';
+    } else if (count === 3) {
+        ordinal = 'dritte';
+    } else if (count === 4) {
+        ordinal = 'vierte';
+    } else {
+        ordinal = 'fünfte';
+    }
+    return ordinal;
+}
 }
 
-function getNthWeekdayInMonth3(date) {
-    const dayOfMonth = date.getDate();
-    if (dayOfMonth < 8) return 1;
-    if (dayOfMonth < 15) return 2;
-    if (dayOfMonth < 22) return 3;
-    if (dayOfMonth < 29) return 4;
-    return 5;
-}
+// function getNthWeekdayInMonth2(date) {
+//     const dayOfMonth = date.getDate();
+//     if (dayOfMonth < 8) return 'erster';
+//     if (dayOfMonth < 15) return 'zweiter';
+//     if (dayOfMonth < 22) return 'dritter';
+//     if (dayOfMonth < 29) return 'vierter';
+//     return 'fünfter';
+// }
 
-function getNthWeekdayInMonth4(date) {
-    const wievielterArray = ['erster', 'zweiter', 'dritter', 'vierter', 'fünfter'];
-    return wievielterArray[Math.floor((date - 1) / 7)];
-}
+// function getNthWeekdayInMonth3(date) {
+//     const dayOfMonth = date.getDate();
+//     if (dayOfMonth < 8) return 1;
+//     if (dayOfMonth < 15) return 2;
+//     if (dayOfMonth < 22) return 3;
+//     if (dayOfMonth < 29) return 4;
+//     return 5;
+// }
+
+// function getNthWeekdayInMonth4(date) {
+//     const wievielterArray = ['erster', 'zweiter', 'dritter', 'vierter', 'fünfter'];
+//     return wievielterArray[Math.floor((date - 1) / 7)];
+// }
 
 function isToday(year, month, day) {
     const today = new Date();
