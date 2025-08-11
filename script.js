@@ -1,4 +1,4 @@
-let today = new Date();
+let today = new Date(2025, 0, 1);
 let todayDay = today.getDate();
 
 let todayDayFormatted = todayDay.toString().padStart(2, '0');
@@ -30,6 +30,12 @@ document.getElementById('nthWeekday').textContent = nthWeekday;
 let feiertagsName = getFeiertag(today);
 
 renderCalenderStart2(todayYear, todayMonth);
+if (feiertagsName) {
+    document.getElementById("holiday").textContent = `Heute ist ein gesetzlicher Feiertag in Hessen: ${feiertagsName}.`;
+} else {
+    document.getElementById("holiday").textContent = "Heute ist kein gesetzlicher Feiertag in Hessen.";
+}
+
 
 
 // HELPER FUNCTIONS //
@@ -53,7 +59,7 @@ function getFeiertag(datum) {
     ];
     for (let f of festeFeiertage) {
         if (f.monat === datum.getMonth() && f.tag === datum.getDate()) {
-            return feiertagsName;
+            return f.name;
         }
     }
     // Jetzt prüfen wir die beweglichen Feiertage
@@ -64,15 +70,15 @@ function getFeiertag(datum) {
     const fronleichnam = getFronleichnam(datum.getFullYear());
 
     if (areDatesEqual(datum, himmelFahrt)) {
-        feiertagsName = "Himmelfahrt";
+        return "Himmelfahrt";
     } else if (areDatesEqual(datum, pfingsten)) {
-        feiertagsName = "Pfingsten";
+        return "Pfingsten";
     } else if (areDatesEqual(datum, karfreitag)) {
-        feiertagsName = "Karfreitag";
+        return "Karfreitag";
     } else if (areDatesEqual(datum, ostermontag)) {
-        feiertagsName = "Ostermontag";
+        return "Ostermontag";
     } else if (areDatesEqual(datum, fronleichnam)) {
-        feiertagsName = "Fronleichnam";
+        return "Fronleichnam";
     }
     return false;
 }
@@ -152,9 +158,6 @@ function renderCalenderStart2(renderYear, renderMonth) {     // funktion to rend
         }
         if (isToday2(day)) {
             cell.classList.add("today");
-        }
-        if (isAndreBirthday(day.getMonth(), day.getDate())) {
-            cell.classList.add("Andre’sBirthday");
         }
         if (getFeiertag(day)) {
             cell.classList.add("feiertag");
@@ -266,21 +269,5 @@ function getDaysInMonth(year, month) {
 
 
 
-// let istFeiertag = false;
-// let feiertagsName = "";
 
-
-// for (let f of feiertage) {
-//     if (f.monat === today.getMonth() && f.tag === today.getDate()) {
-//         istFeiertag = true;
-//         feiertagsName = f.name;
-//         break;
-//     }
-// }
-
-// if (istFeiertag) {
-//     document.getElementById("holiday").textContent = `Heute ist ein gesetzlicher Feiertag in Hessen: ${feiertagsName}.`;
-// } else {
-//     document.getElementById("holiday").textContent = "Heute ist kein gesetzlicher Feiertag in Hessen.";
-// }
 
